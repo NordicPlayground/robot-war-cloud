@@ -1,16 +1,26 @@
-import { Stack, StackProps } from 'aws-cdk-lib';
-import { Construct } from 'constructs';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
+import { Stack, StackProps, CfnOutput } from "aws-cdk-lib";
+import { Construct } from "constructs";
+import * as IAM from "aws-cdk-lib/aws-iam";
 
 export class BackendStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    // The code that defines your stack goes here
+    const user = new IAM.User(this, "webAppUser");
 
-    // example resource
-    // const queue = new sqs.Queue(this, 'BackendQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
+    const accessKeyForWebApp = new IAM.CfnAccessKey(this, "webAppAccessKey", {
+      userName: user.userName,
+      status: "Active",
+    });
+
+    new CfnOutput(this, "webAppUserAccessKeyIdOutput", {
+      value: accessKeyForWebApp.ref,
+      exportName: `${this.stackName}:userAccessKeyId`,
+    });
+
+    new CfnOutput(this, "webAppUserSecretAccessKeyOutput", {
+      value: accessKeyForWebApp.attrSecretAccessKey,
+      exportName: `${this.stackName}:userSecretAccessKey`,
+    });
   }
 }
