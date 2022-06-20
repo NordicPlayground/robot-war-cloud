@@ -22,5 +22,13 @@ export class BackendStack extends Stack {
       value: accessKeyForWebApp.attrSecretAccessKey,
       exportName: `${this.stackName}:userSecretAccessKey`,
     });
+
+    // User needs to be able to access IoT Core
+    user.addToPolicy(
+      new IAM.PolicyStatement({
+        actions: ["iot:DescribeEndpoint"],
+        resources: ["*"],
+      })
+    );
   }
 }
