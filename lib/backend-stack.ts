@@ -15,12 +15,12 @@ export class BackendStack extends Stack {
       status: "Active",
     });
 
-    new CfnOutput(this, "webAppUserAccessKeyIdOutput", {
+    new CfnOutput(this, "webAppUserAccessKeyId", {
       value: accessKeyForWebApp.ref,
       exportName: `${this.stackName}:userAccessKeyId`,
     });
 
-    new CfnOutput(this, "webAppUserSecretAccessKeyOutput", {
+    new CfnOutput(this, "webAppUserSecretAccessKey", {
       value: accessKeyForWebApp.attrSecretAccessKey,
       exportName: `${this.stackName}:userSecretAccessKey`,
     });
