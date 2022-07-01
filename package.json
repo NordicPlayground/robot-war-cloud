@@ -1,8 +1,16 @@
 {
-  "name": "@nordicsemiconductor/nrf-robot-wars-backend",
+  "name": "@robot-war/cloud",
   "version": "0.0.0-development",
-  "description": "AWS backend developed using TypeScript to play a game of nRF Robot Wars.",
+  "description": "AWS backend developed using TypeScript to play a game of nRF Robot War.",
   "author": "Nordic Semiconductor ASA | nordicsemi.no",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NordicPlayground/robot-war-cloud.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NordicPlayground/robot-war-cloud/issues"
+  },
+  "homepage": "https://github.com/NordicPlayground/robot-war-cloud#readme",
   "license": "BSD-3-Clause",
   "bin": {
     "backend": "bin/backend.js"
@@ -10,21 +18,16 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "test": "jest",
     "cdk": "cdk"
   },
   "devDependencies": {
-    "@types/jest": "27.5.2",
-    "@types/node": "10.17.27",
-    "@types/prettier": "2.6.0",
-    "aws-cdk": "2.28.1",
-    "aws-cdk-lib": "2.28.1",
-    "constructs": "10.0.0",
-    "jest": "27.5.1",
+    "@types/node": "18.0.0",
+    "@types/prettier": "2.6.3",
+    "aws-cdk": "2.30.0",
+    "aws-cdk-lib": "2.30.0",
+    "constructs": "10.1.43",
     "source-map-support": "0.5.21",
-    "ts-jest": "27.1.4",
     "ts-node": "10.8.1",
-    "typescript": "~3.9.7"
-  },
-  "dependencies": {}
+    "typescript": "4.7.4"
+  }
 }
